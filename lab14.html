@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style2.css">
+
+</head>
+<body>
+    <main>
+        <div id='profile' class="profile">
+            <div class="notify"><p>1 </p></div>
+        </div>
+    
+        <div class="center">
+            <h1 id="user">Username, ok</h1>
+            <div><label>Set username</label><input type="text" id="name"><button onclick="setName()">set</button></div>
+            <div><label>Set profile</label><input type="text" id="urlprofile"><button onclick="setImg()">set</button></div>
+            <div><label>Set AddParagraph</label><input type="text" id="para"><button onclick="addParagraph()">set</button></div>
+            <div class="container">
+    
+            </div>
+        </div>
+        
+    </main>
+    
+
+    <script>
+        const username = document.getElementById("user");
+        const input = document.getElementById("name");
+        const input2 = document.getElementById("para");
+        const profile = document.getElementById("profile");
+        const urlprofile = document.getElementById("urlprofile");
+        const newdiv = document.getElementsByClassName("container")[0];
+
+        function setName(){
+            username.textContent = input.value + ", ok";
+        }
+        function setImg(){
+            profile.style.backgroundImage = "url("+urlprofile.value +")";
+            console.log(urlprofile.value);
+            urlprofile.value = "";
+        }
+        function addParagraph(){
+            const newpara = document.createElement("p");
+            newpara.textContent = input2.value;
+            newdiv.appendChild(newpara);
+        }
+        </script>
+</body>
+</html>
