@@ -9,22 +9,33 @@
 </head>
 <body>
     <main>
+        <h1 id="user">Username's Phone Book</h1>
         <div id='profile' class="profile">
-            <div class="notify"><p>1 </p></div>
+            <div class="notify" id="notify"><p>1 </p></div>
         </div>
-    
+
         <div class="center">
-            <h1 id="user">Username, ok</h1>
-            <div><label>Set username</label><input type="text" id="name"><button onclick="setName()">set</button></div>
-            <div><label>Set profile</label><input type="text" id="urlprofile"><button onclick="setImg()">set</button></div>
-            <div><label>Set AddParagraph</label><input type="text" id="para"><button onclick="addParagraph()">set</button></div>
-            <div class="container">
-    
-            </div>
+            <div class="input"><label>Set the Username </label><input type="text" id="name" placeholder="Enter Username"><button onclick="setName()">SET</button></div>
+            <div class="input"><label>Set the proflie inmage URL </label><input type="text" id="urlprofile" placeholder="Enter Image URL"><button onclick="setImg()">SET</button></div>
+            <h2>Phone Number List</h2>
+            <div class="input">
+                <input type="text" id="name_tel" placeholder="Name">
+                <input type="text" id="tel" placeholder="Tel">
+                <button onclick="addPhone()">ADD</button>
+                <button onclick="saveCSV()">EXPORT</button></div>
+        </div>
+        <div class="maintable">
+            <div style="background-color: rgb(176, 176, 176);">No.</div>
+            <div style="background-color: rgb(176, 176, 176);">Name</div>
+            <div style="background-color: rgb(176, 176, 176);">Tel</div>
+        </div>
+        <div id="table" class="table">
+            <div><p id="num"></p></div>
+            <div><p id="phonename"></p></div>
+            <div><p id="phone"></p></div>
         </div>
         
     </main>
-    
 
     <script>
         const username = document.getElementById("user");
@@ -32,10 +43,11 @@
         const input2 = document.getElementById("para");
         const profile = document.getElementById("profile");
         const urlprofile = document.getElementById("urlprofile");
-        const newdiv = document.getElementsByClassName("container")[0];
-
+        
+        const phoneList = [];
         function setName(){
-            username.textContent = input.value + ", ok";
+            username.textContent = input.value + "'s Phone Book";
+            input.value = "";
         }
         function setImg(){
             profile.style.backgroundImage = "url("+urlprofile.value +")";
@@ -46,6 +58,47 @@
             const newpara = document.createElement("p");
             newpara.textContent = input2.value;
             newdiv.appendChild(newpara);
+            input2.value = "";
+        }
+        let i = 0;
+        function addPhone(){
+            const num = document.createElement("num");
+            const phonename = document.createElement("phonename");
+            const newdiv = document.getElementById("table");
+            const name_tel = document.getElementById("name_tel");
+            const phone = document.createElement("phone");
+            const tel = document.getElementById("tel");
+            const phoneData = {
+                num: i,
+                name: name_tel.value,
+                tel: tel.value
+            };
+            phoneList.push(phoneData);
+
+            i = i + 1;
+            num.textContent = i;
+            newdiv.appendChild(num);
+
+            phonename.textContent = name_tel.value;
+            newdiv.appendChild(phonename);
+            name_tel.value = "";
+            
+            phone.textContent = tel.value;
+            newdiv.appendChild(phone);
+            tel.value = ""
+        }
+
+        function saveCSV() {
+            const csvContent = "No.,Name,Tel\n" + phoneList.map(row => `${row.num},${row.name},${row.tel}`).join("\n");
+            const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+            const link = document.createElement("a");
+            const url = URL.createObjectURL(blob);
+            link.setAttribute("href", url);
+            link.setAttribute("download", "phonebook.csv");
+            link.style.visibility = "hidden";
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
         }
         </script>
 </body>

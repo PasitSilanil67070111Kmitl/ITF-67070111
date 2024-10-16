@@ -1,6 +1,6 @@
 .profile{
-    width: 300px;
-    height: 300px;
+    width: 183px;
+    height: 183px;
     background-image: url(https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png);
     border-radius: 100%;
     background-position: center;
@@ -11,7 +11,7 @@
 .notify{
     width: 30px;
     height: 30px;
-    background-color: crimson;
+    background-color: rgb(255, 50, 91);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -19,6 +19,7 @@
     position: absolute;
     bottom: 15px;
     right: 15px;
+    color: #ffffff;
 }
 .center{
     display: flex;
@@ -28,4 +29,49 @@
 }
 div{
     padding: 5px;
+}
+button{
+    background-color:#0151ff;
+    width: 55px;
+    height: 20px;
+    border-radius: 5px;
+    color: #ffffff;
+    border-color:  #0151ff  ;
+    padding: 1px;
+}
+input{
+    border-radius: 2px;
+    width: 200px;
+    background-color: rgb(243, 243, 243);
+    border-color:  rgb(243, 243, 243);
+}
+.input{
+    gap: 15px;
+    padding: 10px;
+    display: flex;
+}
+th{
+    border: 1px;
+    width: 500px;
+    margin: auto;
+    background-color: rgb(193, 193, 193);
+}
+h1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.table{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    width: 700px;
+    border-bottom: solid rgb(197, 197, 197) 1px;
+    margin: auto;
+}
+.maintable{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    width: 700px;
+    margin: auto;
 }
