@@ -68,6 +68,7 @@
             const name_tel = document.getElementById("name_tel");
             const phone = document.createElement("phone");
             const tel = document.getElementById("tel");
+            const notify = document.getElementById("notify");
             const phoneData = {
                 num: i,
                 name: name_tel.value,
@@ -78,6 +79,7 @@
             i = i + 1;
             num.textContent = i;
             newdiv.appendChild(num);
+            notify.textContent = i;
 
             phonename.textContent = name_tel.value;
             newdiv.appendChild(phonename);
